@@ -246,3 +246,14 @@
     });
   });
 })();
+
+// FAQ: solo un item abierto a la vez
+document.querySelectorAll('.faq__item').forEach((item) => {
+  item.addEventListener('toggle', () => {
+    if (item.open) {
+      document.querySelectorAll('.faq__item[open]').forEach((other) => {
+        if (other !== item) other.removeAttribute('open');
+      });
+    }
+  });
+});
