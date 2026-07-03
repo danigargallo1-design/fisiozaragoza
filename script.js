@@ -1,259 +1,193 @@
-(function () {
+(!(function () {
   "use strict";
-
-  var WHATSAPP_NUMBER = "34976273000";
-  var CONSENT_KEY = "cfz_cookie_consent_v2";
-
-  // ------- Consent Manager (bloqueo preventivo + granular) -------
-  // Categorías: necesarias (siempre), analitica, marketing.
-  // Ninguna cookie/script no esencial se carga hasta que el usuario consienta.
-  var Consent = {
-    get: function () {
+  var e = "cfz_cookie_consent_v2",
+    t = function () {
       try {
-        var raw = localStorage.getItem(CONSENT_KEY);
-        if (!raw) return null;
-        return JSON.parse(raw);
-      } catch (e) { return null; }
+        var t = localStorage.getItem(e);
+        return t ? JSON.parse(t) : null;
+      } catch (e) {
+        return null;
+      }
     },
-    save: function (c) {
-      c.timestamp = new Date().toISOString();
-      localStorage.setItem(CONSENT_KEY, JSON.stringify(c));
-      applyConsent(c);
+    n = function (t) {
+      ((t.timestamp = new Date().toISOString()), localStorage.setItem(e, JSON.stringify(t)), a(t));
     },
-    clear: function () { localStorage.removeItem(CONSENT_KEY); }
-  };
-
-  function defaultConsent() {
-    return { necesarias: true, analitica: false, marketing: false };
+    o = function () {
+      localStorage.removeItem(e);
+    };
+  var i = { analitica: !1, marketing: !1 };
+  function a(e) {
+    var t;
+    (e.analitica && (i.analitica || (i.analitica = !0)),
+      e.marketing && (i.marketing || (i.marketing = !0)),
+      (e.analitica && e.marketing) ||
+        ((t = ["cfz_cookie_consent_v2"]),
+        document.cookie.split(";").forEach(function (e) {
+          var n = e.split("=")[0].trim();
+          if (n && -1 === t.indexOf(n)) {
+            var o = [location.hostname, "." + location.hostname],
+              i = ["/", location.pathname];
+            (o.forEach(function (e) {
+              i.forEach(function (t) {
+                document.cookie = n + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=" + t + "; domain=" + e;
+              });
+            }),
+              (document.cookie = n + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/"));
+          }
+        })));
   }
-
-  // Aquí es donde se cargarían los scripts de terceros SOLO tras consentimiento.
-  // Mientras el usuario no acepte, nada de analítica/publicidad se ejecuta.
-  var loaded = { analitica: false, marketing: false };
-  function loadAnalytics() {
-    if (loaded.analitica) return;
-    loaded.analitica = true;
-    // Ejemplo (activar cuando se contrate proveedor):
-    // var s = document.createElement('script');
-    // s.async = true;
-    // s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXX';
-    // document.head.appendChild(s);
-    // window.dataLayer = window.dataLayer || [];
-    // function gtag(){ dataLayer.push(arguments); }
-    // gtag('js', new Date()); gtag('config','G-XXXX', { anonymize_ip: true });
-  }
-  function loadMarketing() {
-    if (loaded.marketing) return;
-    loaded.marketing = true;
-    // Aquí se cargarían pixels/remarketing solo con consentimiento explícito.
-  }
-
-  // Elimina cookies no esenciales si el usuario retira su consentimiento.
-  function purgeNonEssentialCookies() {
-    var essential = ["cfz_cookie_consent_v2"]; // ninguna cookie real, solo storage
-    document.cookie.split(";").forEach(function (c) {
-      var name = c.split("=")[0].trim();
-      if (!name) return;
-      if (essential.indexOf(name) !== -1) return;
-      var domains = [location.hostname, "." + location.hostname];
-      var paths = ["/", location.pathname];
-      domains.forEach(function (d) {
-        paths.forEach(function (p) {
-          document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=" + p + "; domain=" + d;
-        });
-      });
-      document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
-    });
-  }
-
-  function applyConsent(c) {
-    if (c.analitica) loadAnalytics();
-    if (c.marketing) loadMarketing();
-    if (!c.analitica || !c.marketing) purgeNonEssentialCookies();
-  }
-
-  // Exponer para el botón "Gestionar cookies"
-  window.CFZCookies = {
-    open: function () { openSettings(); },
-    reset: function () { Consent.clear(); showBanner(); }
-  };
-
-  document.addEventListener("DOMContentLoaded", function () {
-    var header = document.getElementById("site-header");
-    var scrollTopBtn = document.getElementById("scroll-top");
-    var navToggle = document.getElementById("nav-toggle");
-    var mobileNav = document.getElementById("mobile-nav");
-
-    var yearEl = document.getElementById("year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    function onScroll() {
-      var y = window.scrollY || window.pageYOffset;
-      if (header) header.classList.toggle("is-scrolled", y > 20);
-      if (scrollTopBtn) scrollTopBtn.classList.toggle("is-visible", y > 400);
-    }
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-    if (scrollTopBtn) {
-      scrollTopBtn.addEventListener("click", function () {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    }
-
-    if (navToggle && mobileNav) {
-      navToggle.addEventListener("click", function () {
-        var open = mobileNav.classList.toggle("is-open");
-        navToggle.classList.toggle("is-open", open);
-        navToggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
-      });
-      mobileNav.querySelectorAll("a").forEach(function (link) {
-        link.addEventListener("click", function () {
-          mobileNav.classList.remove("is-open");
-          navToggle.classList.remove("is-open");
-        });
-      });
-    }
-
-    var revealEls = document.querySelectorAll(".reveal");
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-in");
-              io.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
-      );
-      revealEls.forEach(function (el) { io.observe(el); });
-    } else {
-      revealEls.forEach(function (el) { el.classList.add("is-in"); });
-    }
-
-    var form = document.getElementById("contact-form");
-    if (form) {
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var nombre = (form.nombre.value || "").trim();
-        var telefono = (form.telefono.value || "").trim();
-        var motivo = (form.motivo.value || "").trim();
-        var msg =
-          "Hola, me gustaría pedir una cita de fisioterapia.\n\n" +
-          "Nombre: " + nombre + "\n" +
-          "Teléfono: " + telefono + "\n" +
-          "Motivo: " + motivo;
-        var url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
-        window.open(url, "_blank", "noopener");
-      });
-    }
-
-    // ---------- Cookie banner + modal ----------
-    var banner = document.getElementById("cookie-banner");
-    var modal = document.getElementById("cookie-modal");
-
-    function showBanner() {
-      if (banner) setTimeout(function () { banner.classList.add("is-visible"); }, 400);
-    }
-    function hideBanner() { if (banner) banner.classList.remove("is-visible"); }
-
-    function openSettings() {
-      if (!modal) return;
-      var current = Consent.get() || defaultConsent();
-      var an = modal.querySelector("#cookie-cat-analitica");
-      var mk = modal.querySelector("#cookie-cat-marketing");
-      if (an) an.checked = !!current.analitica;
-      if (mk) mk.checked = !!current.marketing;
-      modal.classList.add("is-open");
-      document.body.style.overflow = "hidden";
-    }
-    function closeSettings() {
-      if (!modal) return;
-      modal.classList.remove("is-open");
-      document.body.style.overflow = "";
-    }
-    // exponer para uso externo
-    window.CFZCookies.openSettings = openSettings;
-
-    // Estado inicial: si no hay consentimiento, mostrar banner (bloqueo preventivo)
-    var saved = Consent.get();
-    if (!saved) {
-      showBanner();
-    } else {
-      applyConsent(saved);
-    }
-
-    // Banner: aceptar todo
-    var accept = document.getElementById("cookie-accept");
-    if (accept) accept.addEventListener("click", function () {
-      Consent.save({ necesarias: true, analitica: true, marketing: true });
-      hideBanner();
-    });
-    // Banner: rechazar todo
-    var reject = document.getElementById("cookie-reject");
-    if (reject) reject.addEventListener("click", function () {
-      Consent.save({ necesarias: true, analitica: false, marketing: false });
-      hideBanner();
-    });
-    // Banner: configurar
-    var configure = document.getElementById("cookie-configure");
-    if (configure) configure.addEventListener("click", function () {
+  ((window.CFZCookies = {
+    open: function () {
       openSettings();
-    });
-
-    // Modal: guardar preferencias
-    if (modal) {
-      var saveBtn = modal.querySelector("#cookie-save");
-      var rejectAllBtn = modal.querySelector("#cookie-modal-reject");
-      var acceptAllBtn = modal.querySelector("#cookie-modal-accept");
-      var closeBtn = modal.querySelector("#cookie-modal-close");
-
-      if (saveBtn) saveBtn.addEventListener("click", function () {
-        var an = modal.querySelector("#cookie-cat-analitica");
-        var mk = modal.querySelector("#cookie-cat-marketing");
-        Consent.save({
-          necesarias: true,
-          analitica: an ? an.checked : false,
-          marketing: mk ? mk.checked : false
+    },
+    reset: function () {
+      (o(), showBanner());
+    },
+  }),
+    document.addEventListener("DOMContentLoaded", function () {
+      var e = document.getElementById("site-header"),
+        o = document.getElementById("scroll-top"),
+        i = document.getElementById("nav-toggle"),
+        c = document.getElementById("mobile-nav"),
+        r = document.getElementById("year");
+      function l() {
+        var t = window.scrollY || window.pageYOffset;
+        (e && e.classList.toggle("is-scrolled", t > 20), o && o.classList.toggle("is-visible", t > 400));
+      }
+      (r && (r.textContent = new Date().getFullYear()),
+        window.addEventListener("scroll", l, { passive: !0 }),
+        l(),
+        o &&
+          o.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }),
+        i &&
+          c &&
+          (i.addEventListener("click", function () {
+            var e = c.classList.toggle("is-open");
+            (i.classList.toggle("is-open", e), i.setAttribute("aria-label", e ? "Cerrar menú" : "Abrir menú"));
+          }),
+          c.querySelectorAll("a").forEach(function (e) {
+            e.addEventListener("click", function () {
+              (c.classList.remove("is-open"), i.classList.remove("is-open"));
+            });
+          })));
+      var s = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        var d = new IntersectionObserver(
+          function (e) {
+            e.forEach(function (e) {
+              e.isIntersecting && (e.target.classList.add("is-in"), d.unobserve(e.target));
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
+        );
+        s.forEach(function (e) {
+          d.observe(e);
         });
-        closeSettings();
-        hideBanner();
+      } else
+        s.forEach(function (e) {
+          e.classList.add("is-in");
+        });
+      var u = document.getElementById("contact-form");
+      u &&
+        u.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var t = (u.nombre.value || "").trim(),
+            n = (u.telefono.value || "").trim(),
+            o = (u.motivo.value || "").trim(),
+            i =
+              "https://wa.me/34976273000?text=" +
+              encodeURIComponent(
+                "Hola, me gustaría pedir una cita de fisioterapia.\n\nNombre: " +
+                  t +
+                  "\nTeléfono: " +
+                  n +
+                  "\nMotivo: " +
+                  o,
+              );
+          window.open(i, "_blank", "noopener");
+        });
+      var m = document.getElementById("cookie-banner"),
+        v = document.getElementById("cookie-modal");
+      function f() {
+        m && m.classList.remove("is-visible");
+      }
+      function g() {
+        if (v) {
+          var e = t() || { necesarias: !0, analitica: !1, marketing: !1 },
+            n = v.querySelector("#cookie-cat-analitica"),
+            o = v.querySelector("#cookie-cat-marketing");
+          (n && (n.checked = !!e.analitica),
+            o && (o.checked = !!e.marketing),
+            v.classList.add("is-open"),
+            (document.body.style.overflow = "hidden"));
+        }
+      }
+      function k() {
+        v && (v.classList.remove("is-open"), (document.body.style.overflow = ""));
+      }
+      window.CFZCookies.openSettings = g;
+      var p = t();
+      p
+        ? a(p)
+        : m &&
+          setTimeout(function () {
+            m.classList.add("is-visible");
+          }, 400);
+      var E = document.getElementById("cookie-accept");
+      E &&
+        E.addEventListener("click", function () {
+          (n({ necesarias: !0, analitica: !0, marketing: !0 }), f());
+        });
+      var y = document.getElementById("cookie-reject");
+      y &&
+        y.addEventListener("click", function () {
+          (n({ necesarias: !0, analitica: !1, marketing: !1 }), f());
+        });
+      var h = document.getElementById("cookie-configure");
+      if (
+        (h &&
+          h.addEventListener("click", function () {
+            g();
+          }),
+        v)
+      ) {
+        var L = v.querySelector("#cookie-save"),
+          w = v.querySelector("#cookie-modal-reject"),
+          S = v.querySelector("#cookie-modal-accept"),
+          b = v.querySelector("#cookie-modal-close");
+        (L &&
+          L.addEventListener("click", function () {
+            var e = v.querySelector("#cookie-cat-analitica"),
+              t = v.querySelector("#cookie-cat-marketing");
+            (n({ necesarias: !0, analitica: !!e && e.checked, marketing: !!t && t.checked }), k(), f());
+          }),
+          w &&
+            w.addEventListener("click", function () {
+              (n({ necesarias: !0, analitica: !1, marketing: !1 }), k(), f());
+            }),
+          S &&
+            S.addEventListener("click", function () {
+              (n({ necesarias: !0, analitica: !0, marketing: !0 }), k(), f());
+            }),
+          b && b.addEventListener("click", k),
+          v.addEventListener("click", function (e) {
+            e.target === v && k();
+          }));
+      }
+      document.querySelectorAll("[data-cookie-manage]").forEach(function (e) {
+        e.addEventListener("click", function (e) {
+          (e.preventDefault(), g());
+        });
       });
-      if (rejectAllBtn) rejectAllBtn.addEventListener("click", function () {
-        Consent.save({ necesarias: true, analitica: false, marketing: false });
-        closeSettings();
-        hideBanner();
-      });
-      if (acceptAllBtn) acceptAllBtn.addEventListener("click", function () {
-        Consent.save({ necesarias: true, analitica: true, marketing: true });
-        closeSettings();
-        hideBanner();
-      });
-      if (closeBtn) closeBtn.addEventListener("click", closeSettings);
-      modal.addEventListener("click", function (e) {
-        if (e.target === modal) closeSettings();
-      });
-    }
-
-    // Botón "Gestionar cookies" del footer (y cualquier data-cookie-manage)
-    document.querySelectorAll("[data-cookie-manage]").forEach(function (el) {
-      el.addEventListener("click", function (e) {
-        e.preventDefault();
-        openSettings();
-      });
+    }));
+})(),
+  document.querySelectorAll(".faq__item").forEach((e) => {
+    e.addEventListener("toggle", () => {
+      e.open &&
+        document.querySelectorAll(".faq__item[open]").forEach((t) => {
+          t !== e && t.removeAttribute("open");
+        });
     });
-  });
-})();
-
-// FAQ: solo un item abierto a la vez
-document.querySelectorAll('.faq__item').forEach((item) => {
-  item.addEventListener('toggle', () => {
-    if (item.open) {
-      document.querySelectorAll('.faq__item[open]').forEach((other) => {
-        if (other !== item) other.removeAttribute('open');
-      });
-    }
-  });
-});
+  }));
