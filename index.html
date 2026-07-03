@@ -25,6 +25,7 @@
         <a href="#quienes-somos" class="nav__link" data-testid="nav-quienes-somos">Quiénes somos</a>
         <a href="#equipo" class="nav__link" data-testid="nav-equipo">Equipo</a>
         <a href="#clinica" class="nav__link" data-testid="nav-clinica">Clínica</a>
+        <a href="#faq" class="nav__link" data-testid="nav-faq">FAQ</a>
         <a href="#contacto" class="nav__link" data-testid="nav-contacto">Contacto</a>
       </nav>
 
@@ -39,6 +40,7 @@
       <a href="#quienes-somos" class="mobile-nav__link">Quiénes somos</a>
       <a href="#equipo" class="mobile-nav__link">Equipo</a>
       <a href="#clinica" class="mobile-nav__link">Clínica</a>
+      <a href="#faq" class="mobile-nav__link">FAQ</a>
       <a href="#contacto" class="mobile-nav__link">Contacto</a>
       <a href="#contacto" class="btn btn--primary mobile-nav__cta">Reserva tu cita</a>
     </div>
@@ -160,6 +162,61 @@
       </div>
     </section>
 
+    <!-- PREGUNTAS FRECUENTES -->
+    <section class="section" id="faq" data-testid="faq-section">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Preguntas frecuentes</p>
+          <h2 class="section__title">Resolvemos tus dudas</h2>
+          <p class="section__lead">Todo lo que necesitas saber antes de tu primera visita al centro.</p>
+        </div>
+        <div class="faq reveal">
+          <details class="faq__item" data-testid="faq-item">
+            <summary class="faq__question">
+              <span>¿Cuánto dura una sesión de fisioterapia?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__answer"><p>Cada sesión tiene una duración aproximada de 45 a 60 minutos, incluyendo la valoración inicial, el tratamiento y las recomendaciones para casa.</p></div>
+          </details>
+          <details class="faq__item" data-testid="faq-item">
+            <summary class="faq__question">
+              <span>¿Necesito un volante médico para acudir?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__answer"><p>No es imprescindible. Puedes venir directamente y nuestro equipo realizará una valoración completa. Si dispones de informes médicos previos, tráelos para orientar mejor el tratamiento.</p></div>
+          </details>
+          <details class="faq__item" data-testid="faq-item">
+            <summary class="faq__question">
+              <span>¿Trabajáis con seguros médicos?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__answer"><p>Sí, colaboramos con las principales aseguradoras. Contáctanos para confirmar si tu compañía está incluida y gestionar la autorización.</p></div>
+          </details>
+          <details class="faq__item" data-testid="faq-item">
+            <summary class="faq__question">
+              <span>¿Cuántas sesiones necesitaré?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__answer"><p>Depende de cada caso. Tras la valoración inicial te propondremos un plan realista con una estimación clara de sesiones y objetivos.</p></div>
+          </details>
+          <details class="faq__item" data-testid="faq-item">
+            <summary class="faq__question">
+              <span>¿Qué debo llevar a mi primera visita?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__answer"><p>Ropa cómoda que permita moverse con libertad y, si dispones, informes médicos, pruebas de imagen o el historial de tratamientos previos.</p></div>
+          </details>
+          <details class="faq__item" data-testid="faq-item">
+            <summary class="faq__question">
+              <span>¿Hay parking cerca de la clínica?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__answer"><p>Sí, disponemos de varios parkings públicos a pocos minutos andando y zona azul en los alrededores de la calle María Moliner.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACTO -->
     <section class="section" id="contacto" data-testid="contacto-section">
       <div class="container split">
@@ -205,46 +262,88 @@
 
   <!-- FOOTER -->
   <footer class="footer" data-testid="footer-section">
+    <div class="footer__hero container">
+      <div class="footer__hero-text">
+        <p class="eyebrow eyebrow--light">Estamos a tu lado</p>
+        <h3 class="footer__hero-title">¿Empezamos tu recuperación?</h3>
+        <p class="footer__hero-lead">Escríbenos por WhatsApp o llámanos y te atenderemos personalmente.</p>
+      </div>
+      <div class="footer__hero-actions">
+        <a href="https://wa.me/34976273000?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20una%20cita." target="_blank" rel="noopener" class="btn btn--light">Escribir por WhatsApp</a>
+        <a href="tel:+34976273000" class="btn btn--outline-light">+34 976 27 30 00</a>
+      </div>
+    </div>
+
     <div class="container footer__grid">
       <div class="footer__col footer__brand">
         <img src="https://customer-assets.emergentagent.com/job_physio-minimal/artifacts/obs7q53d_307667716_139428525477099_8511899606142763117_n.jpg" alt="Centro Fisioterapéutico de Zaragoza" class="footer__logo" />
-        <p>Fisioterapia, rehabilitación y terapia manual en el corazón de Zaragoza.</p>
+        <p>Fisioterapia, rehabilitación y terapia manual en el corazón de Zaragoza. Cuidamos de ti con cercanía, evidencia y años de experiencia.</p>
+        <div class="social social--footer" data-testid="footer-social">
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 8h2V5h-2a3 3 0 0 0-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8a1 1 0 0 1 1-1Z"/></svg>
+          </a>
+          <a href="https://wa.me/34976273000" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.4-4A8 8 0 1 1 9 18.6L4 20Z"/></svg>
+          </a>
+        </div>
       </div>
+
       <div class="footer__col">
         <h4>Contacto</h4>
-        <p>C. de María Moliner, 5<br />50007 Zaragoza</p>
-        <p><a href="tel:+34976273000">+34 976 27 30 00</a></p>
-        <p><a href="mailto:info@fisioterapiazaragoza.es">info@fisioterapiazaragoza.es</a></p>
+        <ul class="footer__list">
+          <li>
+            <svg class="footer__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s-7-6.2-7-12a7 7 0 1 1 14 0c0 5.8-7 12-7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <span>C. de María Moliner, 5<br />50007 Zaragoza</span>
+          </li>
+          <li>
+            <svg class="footer__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+            <a href="tel:+34976273000">+34 976 27 30 00</a>
+          </li>
+          <li>
+            <svg class="footer__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <a href="mailto:info@fisioterapiazaragoza.es">info@fisioterapiazaragoza.es</a>
+          </li>
+        </ul>
       </div>
+
+      <div class="footer__col">
+        <h4>Horario</h4>
+        <ul class="footer__hours">
+          <li><span>Lunes – Viernes</span><span>9:00 – 20:30</span></li>
+          <li><span>Sábado</span><span>Cerrado</span></li>
+          <li><span>Domingo</span><span>Cerrado</span></li>
+        </ul>
+        <a href="https://maps.google.com/?q=C.+de+María+Moliner,+5,+50007+Zaragoza" target="_blank" rel="noopener" class="footer__map-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 20 3 22V6l6-2 6 2 6-2v16l-6 2-6-2Z"/><path d="M9 4v16M15 6v16"/></svg>
+          <span>Cómo llegar</span>
+        </a>
+      </div>
+
       <div class="footer__col">
         <h4>Enlaces</h4>
         <a href="#servicios">Servicios</a>
+        <a href="#quienes-somos">Quiénes somos</a>
         <a href="#equipo">Equipo</a>
         <a href="#clinica">Clínica</a>
+        <a href="#faq">Preguntas frecuentes</a>
         <a href="#contacto">Contacto</a>
       </div>
+
       <div class="footer__col">
         <h4>Legal</h4>
         <a href="aviso-legal.html" data-testid="footer-aviso-legal">Aviso legal</a>
         <a href="privacidad.html" data-testid="footer-privacidad">Política de privacidad</a>
         <a href="cookies.html" data-testid="footer-cookies">Política de cookies</a>
         <button type="button" class="footer__link-btn" data-cookie-manage data-testid="footer-cookie-manage">Gestionar cookies</button>
-        <div class="social" data-testid="footer-social">
-          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
-          </a>
-          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 8h2V5h-2a3 3 0 0 0-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8a1 1 0 0 1 1-1Z"/></svg>
-          </a>
-          <a href="https://wa.me/34976273000" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20l1.4-4A8 8 0 1 1 9 18.6L4 20Z"/><path d="M9 10c0 3 2 5 5 5"/></svg>
-          </a>
-        </div>
       </div>
     </div>
     <div class="footer__bottom">
-      <div class="container">
+      <div class="container footer__bottom-inner">
         <p>&copy; <span id="year"></span> Centro Fisioterapéutico de Zaragoza. Todos los derechos reservados.</p>
+        <p class="footer__made">Hecho con cuidado en Zaragoza.</p>
       </div>
     </div>
   </footer>
