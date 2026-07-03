@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Centro Fisioterapéutico de Zaragoza. Fisioterapia, rehabilitación y terapia manual en el corazón de Zaragoza. Reserva tu cita." />
+  <title>Centro Fisioterapéutico de Zaragoza | Fisioterapia y Rehabilitación</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="site-header" data-testid="header-section">
+    <div class="container header__inner">
+      <a href="#hero" class="header__logo" data-testid="header-logo">
+        <img src="https://customer-assets.emergentagent.com/job_physio-minimal/artifacts/obs7q53d_307667716_139428525477099_8511899606142763117_n.jpg" alt="Centro Fisioterapéutico de Zaragoza" />
+      </a>
+
+      <nav class="nav" id="main-nav" data-testid="main-nav">
+        <a href="#servicios" class="nav__link" data-testid="nav-servicios">Servicios</a>
+        <a href="#quienes-somos" class="nav__link" data-testid="nav-quienes-somos">Quiénes somos</a>
+        <a href="#equipo" class="nav__link" data-testid="nav-equipo">Equipo</a>
+        <a href="#clinica" class="nav__link" data-testid="nav-clinica">Clínica</a>
+        <a href="#contacto" class="nav__link" data-testid="nav-contacto">Contacto</a>
+      </nav>
+
+      <a href="#contacto" class="btn btn--primary header__cta" data-testid="header-cta">Reserva tu cita</a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" data-testid="nav-toggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobile-nav" data-testid="mobile-nav">
+      <a href="#servicios" class="mobile-nav__link">Servicios</a>
+      <a href="#quienes-somos" class="mobile-nav__link">Quiénes somos</a>
+      <a href="#equipo" class="mobile-nav__link">Equipo</a>
+      <a href="#clinica" class="mobile-nav__link">Clínica</a>
+      <a href="#contacto" class="mobile-nav__link">Contacto</a>
+      <a href="#contacto" class="btn btn--primary mobile-nav__cta">Reserva tu cita</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="hero" data-testid="hero-section">
+      <div class="hero__bg"></div>
+      <div class="container hero__inner">
+        <div class="hero__content reveal">
+          <p class="eyebrow">Fisioterapia · Rehabilitación · Zaragoza</p>
+          <h1 class="hero__title">Recupera tu movimiento,<br />recupera tu bienestar</h1>
+          <p class="hero__text">Tratamientos personalizados de fisioterapia y terapia manual con un equipo profesional dedicado a tu recuperación. Cuidamos de tu cuerpo con rigor y cercanía.</p>
+          <div class="hero__actions">
+            <a href="#contacto" class="btn btn--primary" data-testid="hero-cta">Reserva tu cita</a>
+            <a href="tel:+34976273000" class="btn btn--outline-light" data-testid="hero-call">Llámanos</a>
+          </div>
+        </div>
+      </div>
+      <a href="#servicios" class="hero__scroll" aria-label="Desplázate hacia abajo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg>
+      </a>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="section" id="servicios" data-testid="servicios-section">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Nuestros servicios</p>
+          <h2 class="section__title">Tratamientos a tu medida</h2>
+          <p class="section__lead">Combinamos técnica manual, ejercicio terapéutico y tecnología para tratar el origen del problema, no solo el síntoma.</p>
+        </div>
+        <div class="section__cta reveal">
+          <a href="servicios.html" class="btn btn--primary" data-testid="ver-servicios-btn">Ver todos los servicios</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIÉNES SOMOS -->
+    <section class="section section--alt" id="quienes-somos" data-testid="quienes-somos-section">
+      <div class="container split">
+        <div class="split__media reveal">
+          <img src="https://images.pexels.com/photos/5794025/pexels-photo-5794025.jpeg?auto=compress&cs=tinysrgb&w=1100" alt="Fisioterapeuta trabajando con una paciente" loading="lazy" />
+        </div>
+        <div class="split__content reveal">
+          <p class="eyebrow">Quiénes somos</p>
+          <h2 class="section__title">Un centro pensado para cuidarte</h2>
+          <p class="section__lead">En el Centro Fisioterapéutico de Zaragoza llevamos años acompañando a nuestros pacientes en su recuperación. Creemos en una fisioterapia honesta, basada en la evidencia y centrada en las personas.</p>
+          <p class="section__lead">Cada tratamiento comienza con una valoración detallada para entender el origen de tu molestia y diseñar un plan realista que se adapte a tu vida y a tus objetivos.</p>
+          <div class="stats">
+            <div class="stat"><span class="stat__num">+15</span><span class="stat__label">años de experiencia</span></div>
+            <div class="stat"><span class="stat__num">+5.000</span><span class="stat__label">pacientes tratados</span></div>
+            <div class="stat"><span class="stat__num">100%</span><span class="stat__label">atención personalizada</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section class="section" id="equipo" data-testid="equipo-section">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Nuestro equipo</p>
+          <h2 class="section__title">Profesionales que marcan la diferencia</h2>
+          <p class="section__lead">Un equipo colegiado y en formación continua, comprometido con ofrecerte el mejor tratamiento posible.</p>
+        </div>
+        <div class="grid grid--3">
+          <figure class="team reveal" data-testid="team-member">
+            <div class="team__photo"><img src="https://images.unsplash.com/photo-1611608822650-925c227ef4d2?crop=entropy&cs=srgb&fm=jpg&q=85&w=700" alt="Fisioterapeuta del equipo" loading="lazy" /></div>
+            <figcaption>
+              <h3 class="team__name">Javier Aznar</h3>
+              <p class="team__role">Director · Fisioterapeuta colegiado</p>
+            </figcaption>
+          </figure>
+          <figure class="team reveal" data-testid="team-member">
+            <div class="team__photo"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?crop=entropy&cs=srgb&fm=jpg&q=85&w=700" alt="Fisioterapeuta del equipo" loading="lazy" /></div>
+            <figcaption>
+              <h3 class="team__name">Laura Gimeno</h3>
+              <p class="team__role">Fisioterapia deportiva y punción seca</p>
+            </figcaption>
+          </figure>
+          <figure class="team reveal" data-testid="team-member">
+            <div class="team__photo"><img src="https://images.pexels.com/photos/20860610/pexels-photo-20860610.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Fisioterapeuta del equipo" loading="lazy" /></div>
+            <figcaption>
+              <h3 class="team__name">Marta Serrano</h3>
+              <p class="team__role">Rehabilitación y ejercicio terapéutico</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- MID CTA -->
+    <section class="cta-band" data-testid="mid-cta-section">
+      <div class="container cta-band__inner reveal">
+        <div>
+          <h2 class="cta-band__title">¿Listo para dejar atrás el dolor?</h2>
+          <p class="cta-band__text">Reserva tu primera valoración y empieza tu recuperación hoy mismo.</p>
+        </div>
+        <a href="#contacto" class="btn btn--light" data-testid="mid-cta-button">Reserva tu cita</a>
+      </div>
+    </section>
+
+    <!-- CLÍNICA -->
+    <section class="section section--alt" id="clinica" data-testid="clinica-section">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Nuestra clínica</p>
+          <h2 class="section__title">Un espacio moderno y luminoso</h2>
+          <p class="section__lead">Instalaciones equipadas con la última tecnología en el centro de Zaragoza, diseñadas para que tu recuperación sea cómoda y eficaz.</p>
+        </div>
+        <div class="gallery reveal">
+          <img class="gallery__item gallery__item--tall" src="https://images.pexels.com/photos/30483049/pexels-photo-30483049.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Sala de electroterapia" loading="lazy" />
+          <img class="gallery__item" src="https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?crop=entropy&cs=srgb&fm=jpg&q=85&w=900" alt="Sala de tratamiento" loading="lazy" />
+          <img class="gallery__item" src="https://images.unsplash.com/photo-1645005513713-9e2b92a687d3?crop=entropy&cs=srgb&fm=jpg&q=85&w=900" alt="Zona de ejercicio terapéutico" loading="lazy" />
+          <img class="gallery__item gallery__item--wide" src="https://images.pexels.com/photos/20860592/pexels-photo-20860592.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Sesión de rehabilitación en la clínica" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto" data-testid="contacto-section">
+      <div class="container split">
+        <div class="split__content reveal">
+          <p class="eyebrow">Contacto</p>
+          <h2 class="section__title">Pide tu cita</h2>
+          <p class="section__lead">Rellena el formulario y te atenderemos directamente por WhatsApp para confirmar tu cita lo antes posible.</p>
+          <ul class="contact-list">
+            <li>
+              <span class="contact-list__label">Dirección</span>
+              <span>C. de María Moliner, 5, 50007 Zaragoza</span>
+            </li>
+            <li>
+              <span class="contact-list__label">Teléfono</span>
+              <a href="tel:+34976273000">+34 976 27 30 00</a>
+            </li>
+            <li>
+              <span class="contact-list__label">Horario</span>
+              <span>Lunes a viernes · 9:00 – 20:30</span>
+            </li>
+          </ul>
+        </div>
+        <div class="split__media reveal">
+          <form class="form" id="contact-form" data-testid="contact-form">
+            <div class="field">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required data-testid="form-nombre" />
+            </div>
+            <div class="field">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="Tu teléfono" required data-testid="form-telefono" />
+            </div>
+            <div class="field">
+              <label for="motivo">Motivo de la consulta</label>
+              <textarea id="motivo" name="motivo" rows="4" placeholder="Cuéntanos brevemente qué te ocurre" required data-testid="form-motivo"></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--block" data-testid="form-submit">Enviar por WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" data-testid="footer-section">
+    <div class="container footer__grid">
+      <div class="footer__col footer__brand">
+        <img src="https://customer-assets.emergentagent.com/job_physio-minimal/artifacts/obs7q53d_307667716_139428525477099_8511899606142763117_n.jpg" alt="Centro Fisioterapéutico de Zaragoza" class="footer__logo" />
+        <p>Fisioterapia, rehabilitación y terapia manual en el corazón de Zaragoza.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Contacto</h4>
+        <p>C. de María Moliner, 5<br />50007 Zaragoza</p>
+        <p><a href="tel:+34976273000">+34 976 27 30 00</a></p>
+        <p><a href="mailto:info@fisioterapiazaragoza.es">info@fisioterapiazaragoza.es</a></p>
+      </div>
+      <div class="footer__col">
+        <h4>Enlaces</h4>
+        <a href="#servicios">Servicios</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#clinica">Clínica</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="footer__col">
+        <h4>Legal</h4>
+        <a href="aviso-legal.html" data-testid="footer-aviso-legal">Aviso legal</a>
+        <a href="privacidad.html" data-testid="footer-privacidad">Política de privacidad</a>
+        <a href="cookies.html" data-testid="footer-cookies">Política de cookies</a>
+        <button type="button" class="footer__link-btn" data-cookie-manage data-testid="footer-cookie-manage">Gestionar cookies</button>
+        <div class="social" data-testid="footer-social">
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 8h2V5h-2a3 3 0 0 0-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8a1 1 0 0 1 1-1Z"/></svg>
+          </a>
+          <a href="https://wa.me/34976273000" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20l1.4-4A8 8 0 1 1 9 18.6L4 20Z"/><path d="M9 10c0 3 2 5 5 5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <p>&copy; <span id="year"></span> Centro Fisioterapéutico de Zaragoza. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING BUTTONS -->
+  <button class="fab fab--top" id="scroll-top" aria-label="Volver arriba" data-testid="scroll-top-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></svg>
+  </button>
+  <a class="fab fab--wa" href="https://wa.me/34976273000?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20una%20cita%20de%20fisioterapia." target="_blank" rel="noopener" aria-label="WhatsApp" data-testid="floating-whatsapp-btn">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie" id="cookie-banner" data-testid="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+    <p>Usamos cookies propias y de terceros para mejorar tu experiencia. Puedes aceptar todas, rechazarlas o configurar tu preferencia. Consulta nuestra <a href="cookies.html">política de cookies</a>.</p>
+    <div class="cookie__actions">
+      <button class="btn btn--secondary btn--sm" id="cookie-reject" data-testid="cookie-reject">Rechazar</button>
+      <button class="btn btn--secondary btn--sm" id="cookie-configure" data-testid="cookie-configure">Configurar</button>
+      <button class="btn btn--primary btn--sm" id="cookie-accept" data-testid="cookie-accept">Aceptar</button>
+    </div>
+  </div>
+
+  <!-- COOKIE SETTINGS MODAL -->
+  <div class="cookie-modal" id="cookie-modal" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
+    <div class="cookie-modal__panel">
+      <button class="cookie-modal__close" id="cookie-modal-close" aria-label="Cerrar">×</button>
+      <h3 id="cookie-modal-title">Preferencias de cookies</h3>
+      <p class="cookie-modal__intro">Elige qué tipos de cookies quieres permitir. Puedes cambiar tu decisión en cualquier momento desde el enlace "Gestionar cookies" del pie de página.</p>
+
+      <div class="cookie-cat">
+        <div class="cookie-cat__head">
+          <div>
+            <h4>Estrictamente necesarias</h4>
+            <p>Imprescindibles para el funcionamiento y la seguridad del sitio. No pueden desactivarse.</p>
+          </div>
+          <span class="cookie-cat__lock">Siempre activas</span>
+        </div>
+      </div>
+
+      <div class="cookie-cat">
+        <div class="cookie-cat__head">
+          <div>
+            <h4>Analítica</h4>
+            <p>Nos ayudan a entender el uso del sitio de forma agregada para mejorarlo.</p>
+          </div>
+          <label class="cookie-switch">
+            <input type="checkbox" id="cookie-cat-analitica" />
+            <span></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="cookie-cat">
+        <div class="cookie-cat__head">
+          <div>
+            <h4>Marketing / Publicidad</h4>
+            <p>Se usan para mostrar contenidos y anuncios más relevantes en otras plataformas.</p>
+          </div>
+          <label class="cookie-switch">
+            <input type="checkbox" id="cookie-cat-marketing" />
+            <span></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="cookie-modal__actions">
+        <button class="btn btn--secondary btn--sm" id="cookie-modal-reject">Rechazar todo</button>
+        <button class="btn btn--secondary btn--sm" id="cookie-save">Guardar preferencias</button>
+        <button class="btn btn--primary btn--sm" id="cookie-modal-accept">Aceptar todo</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
